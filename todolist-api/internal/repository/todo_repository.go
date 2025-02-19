@@ -23,3 +23,13 @@ func (r *TodoRepository) GetAll() ([]models.TodoItem, error) {
 	err := r.DB.Find(&todos).Error
 	return todos, err
 }
+
+func (r *TodoRepository) GetByID(id string) (models.TodoItem, error) {
+	var todo models.TodoItem
+	err := r.DB.First(&todo, id).Error
+	return todo, err
+}
+
+func (r *TodoRepository) UpdateByID(id string, todo *models.TodoItem) error {
+	return r.DB.Model(&models.TodoItem{}).Where("id = ?", id).Updates(todo).Error
+}

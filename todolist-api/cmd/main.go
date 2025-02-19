@@ -22,6 +22,8 @@ func main() {
 
 	v1.GET("/todos", todoHandler.GetTodosHandler)
 	v1.POST("/todos", todoHandler.CreateTodoHandler)
+	v1.GET("/todos/:id", todoHandler.GetTodoByIDHandler)
+	v1.PUT("/todos/:id", todoHandler.UpdateTodoByIDHandler)
 
 	r.Run(":8080")
 }
