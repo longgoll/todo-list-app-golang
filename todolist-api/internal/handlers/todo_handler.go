@@ -68,3 +68,13 @@ func (h *TodoHandler) UpdateTodoByIDHandler(c *gin.Context) {
 
 	c.JSON(http.StatusOK, todo)
 }
+
+func (h *TodoHandler) DeleteTodoByIDHandler(c *gin.Context) {
+	id := c.Param("id")
+	if err := h.Service.DeleteTodoByID(id); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusNoContent, nil)
+}

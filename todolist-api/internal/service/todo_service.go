@@ -28,3 +28,7 @@ func (s *TodoService) GetTodoByID(id string) (models.TodoItem, error) {
 func (s *TodoService) UpdateTodoByID(id string, todo *models.TodoItem) error {
 	return s.Repo.UpdateByID(id, todo)
 }
+
+func (s *TodoService) DeleteTodoByID(id string) error {
+	return s.Repo.DeleteByID(id)
+}

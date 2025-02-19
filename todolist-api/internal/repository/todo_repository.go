@@ -33,3 +33,7 @@ func (r *TodoRepository) GetByID(id string) (models.TodoItem, error) {
 func (r *TodoRepository) UpdateByID(id string, todo *models.TodoItem) error {
 	return r.DB.Model(&models.TodoItem{}).Where("id = ?", id).Updates(todo).Error
 }
+
+func (r *TodoRepository) DeleteByID(id string) error {
+	return r.DB.Where("id = ?", id).Delete(&models.TodoItem{}).Error
+}
