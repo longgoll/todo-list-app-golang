@@ -9,3 +9,8 @@ type TodoItem struct {
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 }
+
+// Add this function to specify the table name
+func (TodoItem) TableName() string {
+	return "todos"
+}
